@@ -3,7 +3,6 @@ package com.example.Rest.StudentApplication.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +14,6 @@ import com.example.Rest.StudentApplication.service.StudentService;
 
 
 @RestController
-@CrossOrigin(allowedHeaders = "*",origins ="*" )
 public class StudentController {
 	
 	@Autowired
@@ -30,4 +28,12 @@ public class StudentController {
 	public List<Student>getStudents(){
 		return studentService.getStudents();
 	}
+	
+	@GetMapping(value="/getstudent/{rollnumber}")
+	public Student getstudent(@PathVariable("rollnumber") int rollnumber){
+		return studentService.getStudentById(rollnumber);
+	}
+
+	
+	
 }

@@ -22,5 +22,11 @@ public class StudentService {
 	public List<Student> getStudents(){
 		return studentRepository.findAll();
 	}
-	
+
+	public Student getStudentById(int rollnumber)
+	 {
+	  return studentRepository.findById(rollnumber)
+				 .orElseThrow(() -> new RuntimeException("Student with the id " + rollnumber + " does not exist"));
+		}
+
 }
